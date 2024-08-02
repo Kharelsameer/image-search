@@ -1,5 +1,6 @@
 import searchImages from './search.js';
 import populateLabels from './labels.js';
+import { getQuery } from './localstorage.js';
 
 populateLabels();
 
@@ -11,7 +12,7 @@ document.querySelector('form').addEventListener('submit', async function(event) 
 });
 
 (async() => {
-    const cookie = document.cookie;
-    const query = cookie.split("=")[1];
+
+    const query = getQuery();
     await searchImages(query);
 })();
